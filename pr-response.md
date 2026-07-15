@@ -80,3 +80,4 @@ resolved the conflict by updating watchlist code using UUIDs where it still refe
 ## PR Description 
 
 <!-- Written at the end — feature overview, design decisions, manual testing steps -->
+![git log](git_log.png)
