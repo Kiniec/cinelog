@@ -69,7 +69,7 @@ Reference to integer IDs and not UUID in watchlist code.
 
 **How I resolved it:**
 
-resolved the conflict by updating watchlist code using UUIDs where it still referenced integer IDs.
+Resolved the conflict by updating watchlist code using UUIDs where it still referenced integer IDs.
 
 
 
@@ -93,4 +93,11 @@ All tests passed (8/8 across the full suite).
 ## PR Description 
 
 <!-- Written at the end — feature overview, design decisions, manual testing steps -->
+
+Adds a watchlist feature: users can save films to watch later, view their watchlist, and remove films from it, separate from their existing "watched" collection. Duplicate adds are rejected rather than silently duplicated.
+
+**Design decisions:** Watchlist entries default to `public=False` so a user's saved films aren't shared until they opt in. `get_watchlist()` returns entries newest-added first, since users are more likely to act on what they just saved than scan alphabetically.
+
+**Manual testing:** Start the app (`python app.py`), create a user/film via `flask shell` (no create endpoint exists yet), then: `POST /watchlist/<user_id>/add` with `{"film_id": ...}` (expect 201; repeat to confirm a 409 on duplicate) → `GET /watchlist/<user_id>` (confirm newest-first, `public: false`) → `DELETE /watchlist/<user_id>/remove` with the same body (expect 200; repeat to confirm a 404). Also run `pytest tests/ -v` (8/8 passing).
+
 ![git log](git_log.png)
