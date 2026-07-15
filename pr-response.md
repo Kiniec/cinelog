@@ -2,7 +2,9 @@
 <!-- Fill in at the end - how AI tools were used during the project -->
 ## Commit 1 - Rename 
 **What I did**
+Changed save_to_watchlist() to add_to_watchlist()
 **How I verified**
+Used VSCode to confirm changes were made throughout
 ## Comment 2 - Deduplicatoin
 **What I did**
 **How I verified**
