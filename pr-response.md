@@ -1,7 +1,7 @@
 ## AI Usage 
 <!-- Fill in at the end - how AI tools were used during the project -->
-used Claude Code  in to understanding the logic for add_to_collection, collection of services, models, a test_collections \
-used Claude Code for counter argument for commnet 4 n 5. received the suggest to change the default to False in models.py and change from aphebeical order to date first in get_watchlist() in watchlist_service.py
+Utilized Claude Code in understanding and summarizing the logic for add_to_collection(), collection of services(), models.py, and test_collections.py \
+Utilized Claude Code for counter argument for comment 4 and 5. Received the suggestion to change the default to False in models.py and change from alphabetical order to date first in get_watchlist() function in watchlist_service.py
 ## Commit 1 - Rename 
 **What I did:**
 
@@ -76,6 +76,19 @@ resolved the conflict by updating watchlist code using UUIDs where it still refe
 **How I verified no conflict remains:**
  
  Verified no conflict remains by reviewing git status.
+
+## Stretch - remove_from_watchlist()
+
+**What I did:**
+
+Added `remove_from_watchlist(user_id, film_id)` to `services/watchlist_service.py`, following the same pattern as `remove_from_collection()` in `collection_service.py`: look up the matching `WatchlistEntry` for the (user_id, film_id) pair, and if none exists, raise a new `NotInWatchlistError` instead of silently doing nothing. If found, delete and commit, returning `True`. Also added a `DELETE /watchlist/<user_id>/remove` route in `routes/watchlist/watchlist.py` mirroring the existing `DELETE /collection/<user_id>/remove` route, including catching `NotInWatchlistError` and returning a 404.
+
+**How I verified:**
+
+Added two tests to `tests/test_watchlist.py`: `test_remove_from_watchlist_removes_entry` (confirms the entry is deleted and the count drops to 0) and `test_remove_from_watchlist_not_in_watchlist_raises` (confirms `NotInWatchlistError` is raised, rather than a silent no-op, when the film isn't on the watchlist). Ran:
+> pytest tests/test_watchlist.py -v
+
+All tests passed (8/8 across the full suite).
 
 ## PR Description 
 
