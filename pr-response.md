@@ -1,7 +1,7 @@
 ## AI Usage 
 <!-- Fill in at the end - how AI tools were used during the project -->
-used AI in to understanding the logic for add_to_collection, collection of services, models, a test_collections \
-used AI for counter argument for commnet 4 n 5. received the suggest to change the default to False in models.py and change from aphebeical order to date first in get_watchlist() in watchlist_service.py
+used Claude Code  in to understanding the logic for add_to_collection, collection of services, models, a test_collections \
+used Claude Code for counter argument for commnet 4 n 5. received the suggest to change the default to False in models.py and change from aphebeical order to date first in get_watchlist() in watchlist_service.py
 ## Commit 1 - Rename 
 **What I did:**
 
@@ -64,14 +64,18 @@ Accessing the most recent data is often easier than recall. A user may not remem
 ## Comment 6 - Rebase 
 **What conflicted:**
 
+Reference to integer IDs and not UUID in watchlist code. 
+
 
 **How I resolved it:**
 
+resolved the conflict by updating watchlist code using UUIDs where it still referenced integer IDs.
 
 
 
 **How I verified no conflict remains:**
-
+ 
+ Verified no conflict remains by reviewing git status.
 
 ## PR Description 
 
